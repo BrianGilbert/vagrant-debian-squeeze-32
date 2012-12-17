@@ -1,19 +1,24 @@
 About
 -----
 
-This script will: 
+This script will:
 
  1. download the Debian Squeeze, 32bit iso netinst
  2. ... do some magic to turn it into a vagrant box file
- 3. output package.box 
+ 3. output package.box
 
 Usage
 -----
 
  > ./build.sh
 
- This should do everything you need. If you don't have 
+ This should do everything you need. If you don't have
  mkisofs, install macports, then: sudo port install cdrtools
+
+ If you get "ERROR: mkisofs not found.  Aborting." then use
+ homebrew to install cdrtools.
+
+ > brew install cdrtools
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -30,8 +35,8 @@ Made it:
 Ben's notes
 -----------
 
-Forked Carl's repo, and it sort of worked out of the box. Tweaked 
-office 12.04 release: 
+Forked Carl's repo, and it sort of worked out of the box. Tweaked
+office 12.04 release:
 
  - Downloading 12.04 final release. (Today as of this writing)
  - Checking MD5 to make sure it is the right version
