@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# make sure we have dependencies 
+# make sure we have dependencies
 hash mkisofs 2>/dev/null || { echo >&2 "ERROR: mkisofs not found.  Aborting."; exit 1; }
 
 BOX="debian-squeeze-32"
@@ -27,15 +27,15 @@ chmod -R u+w "${FOLDER_ISO_INITRD}"
 rm -rf "${FOLDER_ISO_INITRD}"
 mkdir -p "${FOLDER_ISO_INITRD}"
 
-ISO_URL="http://ftp.fi.debian.org/debian-cd/6.0.4/i386/iso-cd/debian-6.0.4-i386-netinst.iso"
+ISO_URL="http://cdimage.debian.org/debian-cd/6.0.6/i386/iso-cd/debian-6.0.6-i386-netinst.iso"
 ISO_FILENAME="${FOLDER_ISO}/`basename ${ISO_URL}`"
-ISO_MD5="38bf1278cc5c98c5fa09dd0973ebc9f5"
+ISO_MD5="a5fdc1b74cd573d505a084baf7cc1462"
 
 ISO_GUESTADDITIONS="/Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso"
 
 # download the installation disk if you haven't already or it is corrupted somehow
 echo "Downloading debian-6.0.4-i386-netinst.iso ..."
-if [ ! -e "${ISO_FILENAME}" ] 
+if [ ! -e "${ISO_FILENAME}" ]
 then
    curl --output "${ISO_FILENAME}" -L "${ISO_URL}"
 else
@@ -84,7 +84,7 @@ if [ ! -e "${FOLDER_ISO}/custom.iso" ]; then
   echo "Add late_command script ..."
   chmod u+w "${FOLDER_ISO_CUSTOM}"
   cp "${FOLDER_BASE}/late_command.sh" "${FOLDER_ISO_CUSTOM}"
-  
+
   echo "Running mkisofs ..."
   mkisofs -r -V "Custom Debian Install CD" \
     -cache-inodes -quiet \
@@ -153,7 +153,7 @@ if ! VBoxManage showvminfo "${BOX}" >/dev/null 2>/dev/null; then
     echo -n "."
   done
   echo ""
-  
+
   # Forward SSH
   VBoxManage modifyvm "${BOX}" \
     --natpf1 "guestssh,tcp,,2222,,22"
